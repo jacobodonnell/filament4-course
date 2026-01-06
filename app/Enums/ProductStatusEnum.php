@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Enums;
+
+use Filament\Support\Contracts\HasLabel;
+use Illuminate\Contracts\Support\Htmlable;
+
+enum ProductStatusEnum: string implements HasLabel
+{
+    case IN_STOCK = 'In Stock';
+    case SOLD_OUT = 'Sold Out';
+    case COMING_SOON = 'Coming Soon';
+
+    public function getLabel(): string|Htmlable|null
+    {
+        return $this->value;
+    }
+}
