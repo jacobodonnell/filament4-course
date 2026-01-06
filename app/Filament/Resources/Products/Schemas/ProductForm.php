@@ -3,8 +3,9 @@
 namespace App\Filament\Resources\Products\Schemas;
 
 use App\Enums\ProductStatusEnum;
+use App\Filament\Tables\CategoriesTable;
+use Filament\Forms\Components\ModalTableSelect;
 use Filament\Forms\Components\Radio;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -22,8 +23,9 @@ class ProductForm
                          ->required(),
                 Radio::make('status')
                      ->options(ProductStatusEnum::class),
-                Select::make('category_id')
-                      ->relationship('category', 'name')
+                ModalTableSelect::make('category_id')
+                                ->relationship('category', 'name')
+                                ->tableConfiguration(CategoriesTable::class),
             ]);
     }
 }
