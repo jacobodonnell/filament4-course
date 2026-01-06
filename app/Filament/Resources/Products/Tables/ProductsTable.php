@@ -20,6 +20,7 @@ class ProductsTable
                           ->searchable(),
                 TextColumn::make('price')
                           ->sortable()
+                          ->money(divideBy: 100)
             ])
             ->defaultSort('price', 'desc')
             ->filters([
